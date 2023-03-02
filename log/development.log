@@ -1,0 +1,37 @@
+  [1m[35m (128.7ms)[0m  [1m[35mCREATE DATABASE "expenny_development" ENCODING = 'unicode'[0m
+  [1m[35m (52.4ms)[0m  [1m[35mCREATE DATABASE "expenny_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2023-03-01 16:45:18 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/oki/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/oki/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 586)
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 4645)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-01 16:48:02 +0200
+Processing by PublicController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/index.html.erb within layouts/application
+  Rendered public/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 288)
+  Rendered layout layouts/application.html.erb (Duration: 744.9ms | Allocations: 104223)
+Completed 200 OK in 748ms (Views: 746.2ms | ActiveRecord: 0.0ms | Allocations: 107201)
+
+
+Started GET "/" for 127.0.0.1 at 2023-03-02 09:25:17 +0200
+  
+ActionController::RoutingError (uninitialized constant PublicController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/" for 127.0.0.1 at 2023-03-02 09:25:43 +0200
+Processing by IndexController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/index.html.erb within layouts/application
+  Rendered index/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 110)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 1757)
+Completed 200 OK in 10ms (Views: 8.1ms | Allocations: 2642)
+
+
