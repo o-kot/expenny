@@ -34,32 +34,6 @@ ActiveRecord::Schema[7.0].define(version: 20220230302120335) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "currencies", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "purchased_items", force: :cascade do |t|
-    t.integer "receipt_id", null: false
-    t.string "name", null: false
-    t.integer "type_id", null: false
-    t.integer "brand_id"
-    t.decimal "unit_price", null: false
-    t.float "unit_number", null: false
-    t.integer "unit_type_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "receipts", force: :cascade do |t|
-    t.date "date", null: false
-    t.integer "shop_id", null: false
-    t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "chain_id"
@@ -67,6 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 20220230302120335) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chain_id"], name: "index_shops_on_chain_id"
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "types", force: :cascade do |t|
@@ -81,6 +61,32 @@ ActiveRecord::Schema[7.0].define(version: 20220230302120335) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "receipts", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "shop_id", null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchased_items", force: :cascade do |t|
+    t.index ["receipt_id"], name: "index_purchased_on_receipt_id"
+    t.string "name", null: false
+    t.index ["type_id"], name: "index_purchased_on_type_id"
+    t.index ["brand_id"], name: "index_purchased_on_shop_id"
+    t.index ["category_id"], name: "index_categories_on_category_id"
+    t.decimal "unit_price", null: false
+    t.float "unit_number", null: false
+    t.index ["unit_type_id"], name: "index_purchased_on_unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "categories", "categories"
   add_foreign_key "shops", "chains"
+  add_foreign_key "purchased_items", "receipts"
+  add_foreign_key "purchased_items", "types"
+  add_foreign_key "purchased_items", "brandts"
+  add_foreign_key "purchased_items", "categories"
+  add_foreign_key "purchased_items", "units"
 end

@@ -1,7 +1,15 @@
 <div class="mx-auto max-w-7xl py-4 sm:px-6 lg:px-8 flex justify-end">
-  <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-sm font-medium text-gray-200 shadow-sm hover:bg-fuchsia-700 hover:text-white focus:outline-none">
-  Add Expenses
-  </button>
+  <%= link_to 'Add Expenses', '/receipt_form/index', class:"inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-sm font-medium text-gray-200 shadow-sm hover:bg-fuchsia-700 hover:text-white focus:outline-none" %>
 </div>
-<div id='table'>
+<div id='purchase-table'>
+<h1>All Expenses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>LP</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 </div>
