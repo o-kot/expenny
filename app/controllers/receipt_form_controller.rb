@@ -8,5 +8,6 @@ class ReceiptFormController < ApplicationController
     end
 
     def products
+      @receipt = Receipt.last
     end
   end

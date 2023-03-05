@@ -1,5 +1,5 @@
 class IndexController < ApplicationController
   def index
-    @PurchasedItems = PurchasedItems.all
+    @PurchasedItems = PurchasedItem.all
   end
 end
