@@ -1,0 +1,25 @@
+div.mx-auto.max-w-7xl.py-4.sm\:px-6.lg\:px-8.flex.justify-center
+  h1 Add products
+
+div.mx-auto.max-w-7xl.py-4.sm\:px-6.lg\:px-8.flex.justify-center
+  = form_with model: PurchasedItem.new, method: :post, local: true, class: 'w-1/2' do |form|
+    div.shadow.sm\:overflow-hidden.sm\:rounded-md
+      div.space-y-6.bg-white.px-4.py-5.sm\:p-6
+        div.space-y-6.bg-white.px-4.py-5.sm\:p-6
+          div
+            = form.label :name, "Name:", class: "block text-sm font-medium leading-6 text-gray-900"
+            div.mt-2
+              = form.text_field :name, class: "mt-1 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-700 sm:py-1.5 sm:text-sm sm:leading-6", placeholder: "Strawberry fields"
+
+          div
+            = form.label :type, "Type of product", class: "block text-sm font-medium leading-6 text-gray-900"
+            div.mt-2
+              = form.text_field :type, class: "mt-1 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-700 sm:py-1.5 sm:text-sm sm:leading-6", placeholder: "Chocolate"
+
+          div
+            = form.label :brand, "Brand", class: "block text-sm font-medium leading-6 text-gray-900"
+            div.mt-2
+              = form.text_field :brand, class: "mt-1 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fuchsia-700 sm:py-1.5 sm:text-sm sm:leading-6", placeholder: "Milka"
+
+        div.px-4.py-3.text-right.sm\:px-6
+          = form.submit "Next", class: "inline-flex justify-center rounded-md bg-gray-800 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-fuchsia-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
