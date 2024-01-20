@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20220230302120335) do
+ActiveRecord::Schema[7.0].define(version: 20240120302120337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,19 +40,47 @@ ActiveRecord::Schema[7.0].define(version: 20220230302120335) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "household_members", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_household_members_on_user_id"
+  end
+
+  create_table "packages", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchased_item_household_members", force: :cascade do |t|
+    t.bigint "purchased_item_id"
+    t.bigint "household_member_id"
+    t.index ["household_member_id"], name: "index_purchased_item_household_members_on_household_member_id"
+    t.index ["purchased_item_id"], name: "index_purchased_item_household_members_on_purchased_item_id"
+  end
+
   create_table "purchased_items", force: :cascade do |t|
     t.bigint "receipt_id", null: false
-    t.string "name", null: false
-    t.bigint "type_id", null: false
-    t.bigint "brand_id", null: false
+    t.string "name"
+    t.bigint "type_id"
+    t.bigint "brand_id"
     t.bigint "category_id", null: false
-    t.decimal "unit_price", null: false
-    t.float "unit_number", null: false
-    t.bigint "unit_id", null: false
+    t.decimal "paid_price", null: false
+    t.decimal "unit_price"
+    t.float "unit_number"
+    t.bigint "unit_id"
+    t.decimal "package_price"
+    t.float "package_number"
+    t.bigint "package_id"
+    t.decimal "package_volume"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_purchased_items_on_brand_id"
     t.index ["category_id"], name: "index_purchased_items_on_category_id"
+    t.index ["package_id"], name: "index_purchased_items_on_package_id"
     t.index ["receipt_id"], name: "index_purchased_items_on_receipt_id"
     t.index ["type_id"], name: "index_purchased_items_on_type_id"
     t.index ["unit_id"], name: "index_purchased_items_on_unit_id"
@@ -101,8 +129,12 @@ ActiveRecord::Schema[7.0].define(version: 20220230302120335) do
   end
 
   add_foreign_key "categories", "categories"
+  add_foreign_key "household_members", "users"
+  add_foreign_key "purchased_item_household_members", "household_members"
+  add_foreign_key "purchased_item_household_members", "purchased_items"
   add_foreign_key "purchased_items", "brands"
   add_foreign_key "purchased_items", "categories"
+  add_foreign_key "purchased_items", "packages"
   add_foreign_key "purchased_items", "receipts"
   add_foreign_key "purchased_items", "types"
   add_foreign_key "purchased_items", "units"
