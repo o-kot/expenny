@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-EUR:
-  name: Euro
+Oki:
+  user: 1
+  name: Oki
 
-PLN:
-  name: Polish Zloty
+Ana:
+  user: 1
+  name: Ana

@@ -1,19 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  receipt_id: 1
-  name: MyString
-  type_id: 1
-  brand_id: 1
-  unit_price: 9.99
-  unit_number: 1.5
-  unit_type_id: 1
+#one:
+  #receipt_id: 1
+  #name: MyString
+  #type_id: 1
+  #brand_id: 1
+  #unit_price: 9.99
+  #unit_number: 1.5
+  #unit_type_id: 1
 
-two:
-  receipt_id: 1
-  name: MyString
-  type_id: 1
-  brand_id: 1
-  unit_price: 9.99
-  unit_number: 1.5
-  unit_type_id: 1

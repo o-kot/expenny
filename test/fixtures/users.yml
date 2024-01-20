@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 oki:
+  id: 1
   username: oki
   email: okoczek@gmail.com
   encrypted_password: <%= BCrypt::Password.create('KatEdge1!', cost: BCrypt::Engine::MIN_COST) %>
