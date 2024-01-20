@@ -13,7 +13,12 @@ html
       == render 'layouts/navigation'
     main.container role="main"
       == render 'layouts/messages'
-      = yield
+      - if user_signed_in?
+        / Display content for logged in users
+        = yield
+      - else
+        / Display login form for guests
+        = render 'users/sessions/new'
     footer
       == render 'layouts/footer'
 
