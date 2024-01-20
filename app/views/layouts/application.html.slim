@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Expenny
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+
+  body
+    header
+      == render 'layouts/navigation'
+    main.container role="main"
+      == render 'layouts/messages'
+      = yield
+    footer
+      == render 'layouts/footer'
+
