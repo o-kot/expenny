@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20240120302120337) do
+ActiveRecord::Schema[7.0].define(version: 20240120302120340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,15 @@ ActiveRecord::Schema[7.0].define(version: 20240120302120337) do
     t.index ["unit_id"], name: "index_purchased_items_on_unit_id"
   end
 
+  create_table "purchased_items_tags", force: :cascade do |t|
+    t.bigint "purchased_item_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchased_item_id"], name: "index_purchased_items_tags_on_purchased_item_id"
+    t.index ["tag_id"], name: "index_purchased_items_tags_on_tag_id"
+  end
+
   create_table "receipts", force: :cascade do |t|
     t.date "date", null: false
     t.bigint "shop_id", null: false
@@ -102,6 +111,12 @@ ActiveRecord::Schema[7.0].define(version: 20240120302120337) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chain_id"], name: "index_shops_on_chain_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "types", force: :cascade do |t|
@@ -124,6 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 20240120302120337) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -138,6 +154,8 @@ ActiveRecord::Schema[7.0].define(version: 20240120302120337) do
   add_foreign_key "purchased_items", "receipts"
   add_foreign_key "purchased_items", "types"
   add_foreign_key "purchased_items", "units"
+  add_foreign_key "purchased_items_tags", "purchased_items"
+  add_foreign_key "purchased_items_tags", "tags"
   add_foreign_key "receipts", "shops"
   add_foreign_key "shops", "chains"
 end
