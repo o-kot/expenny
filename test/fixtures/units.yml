@@ -1,7 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+kg:
+  name: Kilogram
 
-two:
-  name: MyString
+g:
+  name: Gram
+
+m:
+  name: Metr
+
+cm:
+  name: Centimetre
+
+szt:
+  name: Sztuka
+
+pill:
+  name: Pill
+
+l:
+  name: Litr
